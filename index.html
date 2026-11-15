@@ -10,151 +10,154 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
-<script>
-const form = document.querySelector(".contact-form");
-const status = document.getElementById("form-status");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const data = new FormData(form);
-
-  try {
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: data,
-      headers: { Accept: "application/json" }
-    });
-
-    if (response.ok) {
-      status.textContent = "Message sent! I'll get back to you soon.";
-      form.reset();
-    } else {
-      status.textContent = "Oops! Something went wrong.";
-    }
-  } catch {
-    status.textContent = "Network error. Please try again later.";
-  }
-});
-</script>
-
 <body>
-    <script src="script.js"></script>
-    <!--Hero section-->
-    <section id="hero">
-        <nav class="hero-nav">
-            <ul>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://docs.google.com/document/d/1lPtCiXsaQTFcae4d9IsCHp7zxARriza_/edit?usp=sharing&ouid=111863541173122451503&rtpof=true&sd=true">Resume</a></li>
-                <li><a href="https://www.linkedin.com/in/mitchell-thai-218512345"><i class="fa-brands fa-linkedin"></i></a></li>
-                <li><a href="https://github.com/MitchyTh"><i class="fab fa-github"></i></a></li>
-            </ul>
-        </nav>
-        <div class="hero-content">
-            <div class="hero-photo">
-                <img src="images/100_0334.jpeg" alt="">
-            </div>
-            <p>Hello! I'm Mitchell Thai, a developer and gameplay programmer. Here, you can check out my work and get more info about me. Hope you enjoy!</p>
-        </div>
-    </section>
-      
-    <!--Project section-->
-    <section id="projects">
-        <div class="project-header">
-            <h1>My Projects</h1>
-            <h3>Interactive and software projects highlighting technical expertise and creativity.</h3>
-        </div>
-        <div class="project-container">
-            <a class="project-card" href="https://agregory-vhs.itch.io/radio-six">
-                <div class="project-image">
-                    <img src="images/radioSixThumbnail.png" alt="">
-                    <div class="project-text">
-                        <h3>RadioSix</h3>
-                        <p>An Analog Horror game</p>
-                    </div>  
+    <div class="layout">
+        <!-- Left Sidebar: Photo, Name, Socials & Projects -->
+        <aside class="sidebar">
+            <div class="profile-header">
+                <div class="hero-photo">
+                <img src="images/portrait.jpeg" alt="Mitchell Thai">
                 </div>
-            </a>
-            <a class="project-card" href="https://github.com/MitchyTh/UnixShell/tree/main">
-                <div class="project-image">
-                    <img src="images/pexels-pixabay-270348.jpg" alt="">
-                    <div class="project-text">
-                        <h3>Custom Unix Shell</h3>
-                        <p>A custom command-line interface built in C</p>
-                    </div>  
-                </div>
-            </a>
-            <a class="project-card" href="https://mitchyth.itch.io/bone-rush">
-                <div class="project-image">
-                    <img src="images/bone_rush_desk.png" alt="bone_rush_desk">
-                    <div class="project-text">
-                        <h3>Bone Rush</h3>
-                        <p>A VR Wave Shooter</p>
-                    </div>
-                </div>
-            </a>
-            <a class="project-card" href="https://github.com/MitchyTh/eCommerce-Spring2025">
-                <div class="project-image">
-                    <img src="images/shutter-speed-BQ9usyzHx_w-unsplash.jpg" alt="bone_rush_desk">
-                    <div class="project-text">
-                        <h3>ECommerce Web App</h3>
-                        <p>Built with C# and .NET</p>
-                    </div>
-                </div>
-            </a>
-            <a class="project-card" href="https://github.com/MitchyTh/BasketballStatTracker">
-                <div class="project-image">
-                    <img src="images/markus-spiske-BfphcCvhl6E-unsplash.jpg" alt="basketball_stat_tracker">
-                    <div class="project-text">
-                        <h3>Basketball Stat Tracker</h3>
-                        <p>Backend for ingesting and ranking basketball player stats</p>
-                    </div>
-                </div>
-            </a>
-             <a class="project-card" href="https://github.com/jake0822/Buggin-out">
-                <div class="project-image">
-                    <img src="images/Screenshot 2026-01-12 at 1.44.24 PM.png" alt="bone_rush_desk">
-                    <div class="project-text">
-                        <h3>Buggin' Out</h3>
-                        <p>A Psychedelic Photography Game</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
-    <!--About me section-->
-    <section id="about">
-        <h1>About</h1>
-        <p>I’m Mitchell Thai, an Honors Computer Science student at Florida State University specializing in game development. I create polished 2D and 3D games using Unity, and Unreal Engine, and I also build full-stack applications and other software projects, leveraging C#, C++, Python, and Java. My work combines technical expertise and versatility to deliver high-quality, engaging experiences across games and software.
-    </p>
-    </section>
+                <h1>Mitchell Thai</h1>
+                <p class="subtitle">Software Engineer &amp; Game Developer</p>
 
-    <section id="contact">
-        <div class="contact-inner">
-          <h1>Contact Me</h1>
-          <p>Have a project or question? Send me a message below.</p>
-      
-          <form class="contact-form" action="https://formspree.io/f/mnjjjnra" method="POST">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-      
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-      
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-      
-            <button type="submit">Send</button>
-          </form>
-          <p id="form-status"></p>
-        </div>
-      </section>
-      
-    <footer>
-        <p>© 2026 Mitchell Thai</p>
-      </footer>
-      
+                <nav class="social-nav">
+                <a href="https://www.linkedin.com/in/mitchell-thai-218512345" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/MitchyTh" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </nav>
+
+                <p class="email-box">mitchellbthai@gmail.com</p>
+
+                <button id="theme-toggle" class="theme-btn">
+                <i class="fa-solid fa-moon" id="theme-icon"></i> <span id="theme-text">Dark Mode</span>
+            </button>
+            </div>
+            
+            <!-- Project sidebar tabs -->
+            <div class="sidebar-projects">
+                <span class="sidebar-label">Projects</span>
+                <div class="project-container">
+                    <button class="project-card" data-project="radiosix">
+                        <div class="project-text">
+                            <h3>RadioSix</h3>
+                            <p>An Analog Horror game</p>
+                        </div>
+                    </button>
+                    <button class="project-card" data-project="unixshell">
+                        <div class="project-text">
+                            <h3>Custom Unix Shell</h3>
+                            <p>A custom command-line interface built in C</p>
+                        </div>
+                    </button>
+                    <button class="project-card" data-project="bonerush">
+                        <div class="project-text">
+                            <h3>Bone Rush</h3>
+                            <p>A VR Wave Shooter</p>
+                        </div>
+                    </button>
+                    <button class="project-card" data-project="ecommerce">
+                        <div class="project-text">
+                            <h3>ECommerce Web App</h3>
+                            <p>Built with C# and .NET</p>
+                        </div>
+                    </button>
+                    <button class="project-card" data-project="basketball">
+                        <div class="project-text">
+                            <h3>Basketball Stat Tracker</h3>
+                            <p>Backend for ingesting and ranking player stats</p>
+                        </div>
+                    </button>
+                    <button class="project-card" data-project="bugginout">
+                        <div class="project-text">
+                            <h3>Buggin' Out</h3>
+                            <p>A Psychedelic Photography Game</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area with View Swapping -->
+        <main class="main-content">
+            
+            <!-- DEFAULT HOME SCREEN VIEW -->
+            <div id="home-view">
+                <!-- Hero section -->
+                <section id="hero">
+                    <div class="hero-content">
+                        <p>Hi! I'm Mitchell and I make stuff. Most of it you can find here! If you want to hire me to make more stuff that would be awesome! If not, I still hope you enjoy looking around.</p>
+                    </div>
+                </section>
+                
+                <section id="ex-and-education">
+                    <section id="experience">
+                        <h2 class="section-title">Experience</h2>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>Software Engineer Intern — CAE USA</h3>
+                                <span class="tag">May 2026 – Aug 2026</span>
+                            </div>
+                            <p class="project-detail">Engineered low-level C++ interoperability components, optimized cross-platform CMake and GitHub Actions build pipelines, and debugged multi-threaded simulation code.</p>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>Project Facilitator Intern — (FSU Innovation Hub)</h3>
+                                <span class="tag">2026 – Present</span>
+                             </div>
+                            <p class="project-detail">Directing agile development pipelines, managing sprint planning, and mentoring developers in Unity, Jira, and Git workflows.</p>
+                        </div>
+                    </section>
+
+                    <!-- Education section -->
+                    <section id="education">
+                        <h2 class="section-title">Education</h2>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>Florida State University</h3>
+                                <span class="tag">2023 – 2027</span>
+                            </div>
+                            <p class="project-detail">Bachelor of Science in Computer Science, Honors College</p>
+                        </div>
+                    </section>
+                </section>
+
+                <!-- About me section -->
+                <section id="about">
+                    <h2 class="section-title">About</h2>
+                    <div class="about-content">
+                        <p>I’m Mitchell Thai, an Honors Computer Science student at Florida State University specializing in game development. I create polished 2D and 3D games using Unity, and Unreal Engine, and I also build full-stack applications and other software projects, leveraging C#, C++, Python, and Java. My work combines technical expertise and versatility to deliver high-quality, engaging experiences across games and software.</p>
+                    </div>
+                </section>
+
+                <footer>
+                    <p>© 2026 Mitchell Thai</p>
+                </footer>
+            </div>
+
+            <!-- DYNAMIC PROJECT DETAIL SCREEN VIEW -->
+            <div id="project-detail-view" class="hidden">
+                <button id="back-to-home" class="back-btn">← Back to Overview</button>
+                
+                <div class="detail-header">
+                    <h1 id="detail-title">Project Title</h1>
+                    <a id="detail-link" href="#" target="_blank" rel="noopener noreferrer" class="external-btn">
+                        View Project ↗
+                    </a>
+                </div>
+
+                <div id="detail-stack" class="stack-container">
+                    <!-- Tech stack badges injected dynamically via script.js -->
+                </div>
+
+                <div class="detail-body">
+                    <p id="detail-description">Project details go here...</p>
+                </div>
+            </div>
+
+        </main>
+    </div>  
+
+  <!-- JavaScript connection -->
+  <script src="script.js"></script>
 </body>
 </html>

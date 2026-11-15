@@ -1,26 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.hidden {
+  display: none !important;
+}
+
+:root {
+  --bg-body: #92B8CE;           /* Water Light Blue */
+  --bg-sidebar: #F4F1EA;        /* Soft Warm Sand */
+  --bg-card: #F4F1EA;           /* Cards */
+  --bg-sidebar-card: #E5E0D5;   /* Sidebar project tiles */
+  
+  --text-main: #2C3E50;         /* Dark Slate */
+  --text-card: #2C3E50;         
+  
+  --accent: #F6931C;            /* Sunset Orange */
+  --border-color: #CBD5E1;      
+}
+
+/* ==========================================
+   DARK MODE OVERRIDES (Midnight Ocean Theme)
+========================================== */
+body.dark-mode {
+  --bg-body: #0F172A;           /* Deep Midnight Navy */
+  --bg-sidebar: #1E293B;        /* Slate Sidebar */
+  --bg-card: #1E293B;           /* Dark Cards */
+  --bg-sidebar-card: #334155;   /* Darker tiles */
+  
+  --text-main: #F8FAFC;         /* Crisp White Text */
+  --text-card: #F8FAFC;         
+  
+  --accent: #F6931C;            /* Sunset Orange pop */
+  --border-color: #475569;      
+}
+
+/* Theme Toggle Button Styling */
+.theme-btn {
+  background: var(--bg-sidebar-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  transition: opacity 0.2s ease;
+}
+
+.theme-btn:hover {
+  opacity: 0.85;
+}
 /* ------------------- Base ------------------- */
 body {
   margin: 0;
   height: 100vh;
-  background-color: #000;
-  background-image:
-    linear-gradient(rgba(0,255,255,0.3) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,0,255,0.3) 1px, transparent 1px),
-    linear-gradient(rgba(0,255,0,0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,0,0.1) 1px, transparent 1px);
+  background-color: var(--bg-body);
   background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
-  animation: moveGrid 15s linear infinite;
-  font-family: "Inter", system-ui, sans-serif;
-}
-
-/* Grid animation */
-@keyframes moveGrid {
-  0% {
-    background-position: 0 0, 0 0;
-  }
-  100% {
-    background-position: 100px 100px, 100px 100px;
-  }
+  font-family: "Poppins", sans-serif;
 }
 
 section {
@@ -28,304 +69,411 @@ section {
   overflow: hidden;
 }
 
-/* ------------------- Hero ------------------- */
-#hero {
-  min-height: 90vh;
-  position: relative;
-  padding: 20px;
-  background-color: rgba(18,18,18,0.6); /* semi-transparent dark overlay */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 5fr; 
+  gap: 4rem;
 }
 
-/* Sticky nav inside hero */
-.hero-nav {
+/* ------------------- Sidebar ------------------- */
+.sidebar {
   position: sticky;
   top: 0;
-  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  padding: 12px 0;
-  background-color: rgba(18,18,18,0.95);
-  z-index: 10;
+  flex-direction: column;
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  background-color: var(--bg-sidebar);
 }
 
-.hero-nav ul {
+/* ------------------- Profile Header ------------------- */
+.profile-header {
   display: flex;
-  gap: 36px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.hero-nav a {
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.hero-nav a:hover {
-  color: #0ff; /* cyan accent hover */
-}
-
-/* Hero content card */
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  gap: 40px;
-  background-color: #f5f5f5;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-  max-width: 1000px;
-  width: 70%;
+  flex-direction: column;
+  align-items: left;
+  padding: 1rem 0;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+  color: var(--text-main);
 }
 
 .hero-photo img {
-  width: 220px;
-  height: 220px;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 10%;
   border: none;
+  object-position: center bottom;
 }
 
-.hero-content p {
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 1.6;
+.sidebar h1 {
+  font-size: 30px;
+  margin: 12px 0 4px;
 }
 
-/* ------------------- Projects ------------------- */
-/* =====================
-   Projects Section
-===================== */
-
-#projects {
-  background-color: rgba(18, 18, 18, 1);
-  padding: clamp(80px, 12vh, 140px) 0;
-}
-
-/* =====================
-   Header
-===================== */
-
-.project-header {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 clamp(22px, 5vw, 40px);
-}
-
-.project-header h1 {
-  font-family: inherit;
-  font-size: clamp(32px, 6vw, 42px);
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: #7ffcff;
+.sidebar .subtitle {
+  font-size: 14px;
+  color: inherit;
   margin: 0;
 }
 
-.project-header h3 {
-  font-family: inherit;
-  font-size: 16px;
-  color: #ccc;
-  margin-top: 12px;
+.sidebar .social-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 5%;
+  color: var(--accent);
 }
 
-/* =====================
-   Project Grid
-===================== */
-
-.project-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px clamp(22px, 5vw, 40px);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
+.sidebar .social-nav a {
+  font-size: 20px;
+  font-weight: 600;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
 }
 
-/* =====================
-   Project Card
-===================== */
-
-.project-card {
-  position: relative;
-  background: #1e1e1e;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.sidebar .profile-header .email-box {
+  font-size: 14px;
+  color: inherit;
+  margin-top: 5%;
 }
 
-.project-card:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(0, 255, 255, 0.3);
-  border: 2px solid #0ff;
-}
-
-/* =====================
-   Image
-===================== */
-
-.project-image {
-  position: relative;
-  aspect-ratio: 16 / 9;
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* =====================
-   Hover Text Overlay
-===================== */
-
-.project-text {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-
+/* Sidebar Projects */
+.sidebar .sidebar-projects {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  gap: 12px;
+}
 
-  padding: 16px;
-  color: #fff;
+.sidebar .sidebar-projects .sidebar-label {
+  margin-top: 20px;
+  color: var(--text-main);
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 30px;
+  font-weight: 600;
+}
 
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0.1) 60%
-  );
+/* =====================
+   Dense Project Grid
+===================== */
 
-  opacity: 0;
+/* =====================
+   Rounded Side Tabs
+===================== */
+.project-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;                   /* Slight breathing room between tabs */    
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar .project-card {
+  position: relative;
+  width: 100%;
+  min-height: 64px;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  
+  border-radius: 0 12px 12px 0;
+  border: 1px solid var(--border-color);
+  border-right: none;         /* Connects seamlessly to the sidebar's right border */
+  
+  background-color: var(--bg-sidebar-card);
+  padding: 12px 16px;
+  box-sizing: border-box;
+  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Override the old absolute positioning so the tab sizes naturally to its text */
+.sidebar .project-card .project-text {
+  position: static;
+  padding: 0;
+  color: var(--text-main);
   pointer-events: none;
-  transition: opacity 0.3s ease;
 }
 
-.project-card:hover .project-text {
-  opacity: 1;
-  pointer-events: auto;
+.sidebar .project-card .project-text h3 {
+  font-size: 0.95rem;
+  margin: 0 0 2px;
 }
 
-.project-text h3 {
-  margin: 6px 0 2px;
+.sidebar .project-card .project-text p {
+  font-size: 0.78rem;
+  margin: 0;
+  opacity: 0.8;
 }
 
-.project-text p {
-  margin: 3px 0 4px;
+/* Subtle nudge & highlight on hover */
+.sidebar .project-card:hover {
+  background-color: var(--bg-body);
+  opacity: 0.9;
+}
+
+/* Active Tab: Matches main page background & covers the sidebar divider line */
+.sidebar .project-card.active-tab {
+  background-color: var(--bg-body);
+  border-color: var(--border-color);
+  margin-right: -1px;         /* Overlaps the 1px sidebar border so it fuses into the main screen */
+  width: calc(100% + 1px);
+  z-index: 2;
+}
+
+.sidebar .project-card.active-tab .project-text {
+  color: var(--text-main);
+  font-weight: 600;
+}
+/* ==========================================
+   Project Detail Screen (Matches Experience/About Cards)
+========================================== */
+#project-detail-view {
+  max-width: 900px;
+}
+
+/* Back button matching your warm muted tones */
+.back-btn {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.back-btn:hover {
+  background-color: var(--bg-card);
+  color: var(--text-card);
+}
+
+/* Header row matching .section-title (36px, #463F3A) */
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.detail-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+/* External GitHub / Itch link styled like an enlarged .tag */
+.external-btn {
+  font-size: 0.85rem;
+  background-color: var(--accent); /* #FFB326 */
+  color: var(--text-main);         /* #463F3A */
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.external-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Tech stack pills matching your .tag styling */
+.stack-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stack-badge {
+  font-size: 0.75rem;
+  background-color: var(--accent); /* #FFB326 */
+  color: var(--text-main);         /* #463F3A */
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Details container matching #experience .project-card */
+.detail-body {
+  background-color: var(--bg-card); /* #8A817C */
+  color: var(--text-card);          /* #F4F3EE */
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.detail-body p {
+  margin: 2px;
+}
+
+.main-content {
+  padding: 20px;
+  overflow: auto;
+  height: auto;
+}
+
+/* ------------------- Hero ------------------- */
+#hero {
+  display: flex;
+  justify-content: left;
+  position: relative;
+  margin-top: 0;
+}
+
+.hero-content {
+  position: sticky;
+  display: flex;
+  padding: 5px;
+  border-radius: 6px;
+  width: 70%;
+  height: 30%;
+}
+
+.hero-content p {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+/* =====================
+   Experience & Education
+===================== */
+
+#ex-and-education {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+}
+
+#ex-and-education > section {
+  flex: 1;             
+}
+
+/* Section Titles */
+#experience .section-title,
+#education .section-title,
+#about .section-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+/* Shared Card Styling for Experience & Education */
+#experience .project-card,
+#education .project-card {
+  background-color: var(--bg-card);
+  color: var(--text-card);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  height: auto;
+  width: auto;
+  margin-right: 5%;
+}
+
+#experience .project-header,
+#education .project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+#experience .project-header h3,
+#education .project-header h3 {
+  font-size: 1.15rem;
+  margin: 2px;
+}
+
+#experience .project-card p, 
+#experience .project-detail,
+#education .project-card p, 
+#education .project-detail {
+  margin: 2px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-card);
+}
+
+/* Tags */
+.tag,
+#experience .tag,
+#education .tag {
+  font-size: 0.75rem;
+  background: var(--accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  color: var(--text-main);
+  font-weight: 500;
+  width: fit-content;
 }
 
 /* ------------------- About ------------------- */
 #about {
   position: relative;
-
-  width: min(500px, calc(100% - 48px));
-  margin: clamp(24px, 8vh, 80px) auto;
-
-  padding: clamp(32px, 6vh, 80px) clamp(24px, 5vw, 40px);
-
-  background-color: #f5f5f5;
-  color: #111;
-
-  border-radius: 12px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 }
 
-#about h1 {
-  font-size: 28px;
-  margin-bottom: 8px;
-  color: black;                 /* neon cyan accent */
+.about-content {
+  gap: 12px;
+  background-color: var(--bg-card);
+  margin-top: 20px;
+  border-radius: 6px;
 }
 
 #about p {
-  color: black;
+  color: var(--text-card);
   font-size: 16px;
   line-height: 1.6;
   align-self: left;
+  padding: 16px;
 }
 
-#contact {
-  padding: clamp(60px, 10vh, 100px) clamp(24px, 5vw, 40px);
-  background-color: rgba(18,18,18,1);
-  color: #eee;
-  min-height: 70vh;
-}
-
-.contact-inner {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.contact-inner h1 {
-  font-size: clamp(32px, 6vw, 42px);
-  font-weight: 700;
-  color: #7ffcff; /* neon accent */
-  margin-bottom: 8px;
-}
-
-.contact-inner p {
-  font-size: 16px;
-  color: #ccc;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.contact-form label {
-  font-weight: 600;
-  color: #aaa;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: none;
-  background-color: #1e1e1e;
-  color: #eee;
-  font-size: 14px;
-  resize: none;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: 2px solid #0ff;
-}
-
-.contact-form button {
-  padding: 14px 20px;
-  border-radius: 8px;
-  border: none;
-  background-color: #0ff;
-  color: #000;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.contact-form button:hover {
-  transform: scale(1.05);
-}
-
+/* ------------------- Footer ------------------- */
 footer {
   margin-top: clamp(40px, 10vh, 120px);
   padding: 24px;
   text-align: center;
-  color: #aaa;
+  color: var(--text-main);
+}
+
+/* ------------------- Scrollbar Styling ------------------- */
+.sidebar {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
