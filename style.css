@@ -233,7 +233,7 @@ section {
    Project Detail Screen (Matches Experience/About Cards)
 ========================================== */
 #project-detail-view {
-  max-width: 900px;
+  max-width: 1150px;
 }
 
 /* Back button matching your warm muted tones */
@@ -267,7 +267,7 @@ section {
 }
 
 .detail-header h1 {
-  font-size: 36px;
+  font-size: 42px;
   font-weight: 700;
   color: var(--text-main);
   margin: 0;
@@ -299,22 +299,21 @@ section {
 }
 
 .stack-badge {
-  font-size: 0.75rem;
-  background-color: var(--accent); /* #FFB326 */
-  color: var(--text-main);         /* #463F3A */
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  font-weight: 500;
+  font-size: 0.85rem; /* Slightly larger pills */
+  background-color: var(--accent);
+  color: var(--text-main);
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
 }
 
-/* Details container matching #experience .project-card */
 .detail-body {
-  background-color: var(--bg-card); /* #8A817C */
-  color: var(--text-card);          /* #F4F3EE */
+  background-color: var(--bg-card);
+  color: var(--text-card);
   border-radius: 12px;
-  padding: 16px;
-  font-size: 16px;
-  line-height: 1.6;
+  padding: 24px; /* More internal breathing room */
+  font-size: 18px; /* Scaled up from 16px for easier reading */
+  line-height: 1.7;
 }
 
 .detail-body p {
@@ -476,4 +475,68 @@ footer {
 
 .sidebar::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================
+   Project Detail Image Gallery
+========================================== */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.detail-screenshot {
+  cursor: zoom-in;
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  display: block;
+}
+
+/* ==========================================
+   Full-Screen Image Lightbox
+========================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 24px;
+  cursor: zoom-out;
+}
+
+.lightbox-content {
+  max-width: 92vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 32px;
+  color: #F8FAFC;
+  font-size: 40px;
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--accent);
 }

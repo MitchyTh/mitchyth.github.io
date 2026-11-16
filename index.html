@@ -37,6 +37,12 @@
             <div class="sidebar-projects">
                 <span class="sidebar-label">Projects</span>
                 <div class="project-container">
+                    <button class="project-card" data-project="pianoaction">
+                        <div class="project-text">
+                            <h3>Piano Action Regulation Adjustment Simulator</h3>
+                            <p>A VR simulator for piano technology students</p>
+                        </div>
+                    </button>
                     <button class="project-card" data-project="radiosix">
                         <div class="project-text">
                             <h3>RadioSix</h3>
@@ -59,12 +65,6 @@
                         <div class="project-text">
                             <h3>ECommerce Web App</h3>
                             <p>Built with C# and .NET</p>
-                        </div>
-                    </button>
-                    <button class="project-card" data-project="basketball">
-                        <div class="project-text">
-                            <h3>Basketball Stat Tracker</h3>
-                            <p>Backend for ingesting and ranking player stats</p>
                         </div>
                     </button>
                     <button class="project-card" data-project="bugginout">
@@ -152,10 +152,20 @@
                 <div class="detail-body">
                     <p id="detail-description">Project details go here...</p>
                 </div>
+
+                <div id="detail-images" class="image-gallery">
+                    <!-- Project images injected dynamically via script.js -->
+                </div>
             </div>
 
         </main>
     </div>  
+
+    <!-- Image Lightbox Modal -->
+<div id="image-lightbox" class="lightbox hidden">
+  <span id="lightbox-close" class="lightbox-close">&times;</span>
+  <img id="lightbox-img" class="lightbox-content" src="" alt="Expanded project screenshot">
+</div>
 
   <!-- JavaScript connection -->
   <script src="script.js"></script>
